@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--数据资源-->
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/javaWeb"/>
+        <property name="username" value="root"/>
+        <property name="password" value="123456"/>
+    </bean>
+
+    <!--登录用户-->
+    <bean id="user" class="springC.pojo.User"/>
+
+    <!--连接模板-->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--目标对象-->
+    <bean id="userDaoTarget" class="springC.dao.impl.UserDaoImpl">
+        <property name="User" ref="user"/>
+        <property name="JdbcTemplate" ref="jdbcTemplate"/>
+    </bean>
+
+    <!--权限处理-->
+    <bean id="log" class="springC.interceptor.Log">
+        <property name="User" ref="user"/>
+    </bean>
+
+    <!--日志处理-->
+    <bean id="authority" class="springC.interceptor.Authority">
+        <property name="User" ref="user"/>
+    </bean>
+
+    <!--代理对象-->
+    <bean id="userDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!--目标接口-->
+        <property name="proxyInterfaces" value="springC.dao.UserDao"/>
+        <!--目标对象-->
+        <property name="target" ref="userDaoTarget"/>
+        <!--增强处理-->
+        <property name="interceptorNames">
+            <list>
+                <value>authority</value>
+                <value>log</value>
+            </list>
+        </property>
+    </bean>
+
+    <!--代理服务-->
+    <bean id="userService" class="springC.service.impl.UserServiceImpl">
+        <property name="UserDao" ref="userDaoProxy"/>
+    </bean>
+
+</beans>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="order1" class="springA.pojo.Order">
+        <property name="id" value="20210504557"/>
+        <property name="clientName" value="赵尚凌"/>
+        <property name="money" value="97.5"/>
+    </bean>
+
+    <bean id="order2" class="springA.pojo.Order">
+        <constructor-arg index="0" value="20210504558"/>
+        <constructor-arg index="1" value="刘瑞华"/>
+        <constructor-arg index="2" value="157.5"/>
+    </bean>
+
+    <bean id="cellPhone" class="springA.dao.impl.NotifyDaoByCellPhoneImpl"/>
+    <bean id="weixin" class="springA.dao.impl.NotifyDaoByWeixinImpl"/>
+
+    <bean id="orderNotify1" class="springA.service.OrderNotify">
+        <property name="order" ref="order1"/>
+        <property name="notifyDao" ref="cellPhone"/>
+    </bean>
+    <bean id="orderNotify2" class="springA.service.OrderNotify">
+        <constructor-arg index="0" ref="order2"/>
+        <constructor-arg index="1" ref="weixin"/>
+    </bean>
+
+</beans>
