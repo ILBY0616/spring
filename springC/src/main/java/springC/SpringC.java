@@ -8,7 +8,7 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class AppC {
+public class SpringC {
     public static void main(String[] args) throws UnknownHostException {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
         UserService userService = ac.getBean("userService", UserService.class);

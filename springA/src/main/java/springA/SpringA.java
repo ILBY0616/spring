@@ -2,7 +2,7 @@ package springA;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import springA.service.OrderNotify;
-public class AppA {
+public class SpringA {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         OrderNotify orderNotify1 = context.getBean("orderNotify1", OrderNotify.class);

@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import springB.service.OrderNotify;
 
-public class AppB {
+public class SpringB {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         OrderNotify orderNotify3 = context.getBean("orderNotify", OrderNotify.class);
