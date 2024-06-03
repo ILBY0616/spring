@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="order1" class="springA.pojo.Order">
+    <bean id="orderQQ" class="springA.pojo.Order">
         <property name="id" value="20210504557"/>
-        <property name="clientName" value="赵尚凌"/>
+        <property name="username" value="赵尚凌"/>
         <property name="money" value="97.5"/>
     </bean>
 
-    <bean id="order2" class="springA.pojo.Order">
+    <bean id="orderWeChat" class="springA.pojo.Order">
         <constructor-arg index="0" value="20210504558"/>
         <constructor-arg index="1" value="刘瑞华"/>
         <constructor-arg index="2" value="157.5"/>
     </bean>
 
-    <bean id="cellPhone" class="springA.dao.impl.NotifyDaoByCellPhoneImpl"/>
-    <bean id="weixin" class="springA.dao.impl.NotifyDaoByWeixinImpl"/>
+    <bean id="noticeDaoByQQ" class="springA.dao.impl.NoticeDaoByQQImpl"/>
+    <bean id="noticeDaoByWeChat" class="springA.dao.impl.NoticeDaoByWeChatImpl"/>
 
-    <bean id="orderNotify1" class="springA.service.OrderNotify">
-        <property name="order" ref="order1"/>
-        <property name="notifyDao" ref="cellPhone"/>
+    <bean id="noticeByQQ" class="springA.service.OrderNotice">
+        <property name="order" ref="orderQQ"/>
+        <property name="noticeDao" ref="noticeDaoByQQ"/>
     </bean>
-    <bean id="orderNotify2" class="springA.service.OrderNotify">
-        <constructor-arg index="0" ref="order2"/>
-        <constructor-arg index="1" ref="weixin"/>
+    <bean id="noticeByWeChat" class="springA.service.OrderNotice">
+        <constructor-arg index="0" ref="orderWeChat"/>
+        <constructor-arg index="1" ref="noticeDaoByWeChat"/>
     </bean>
 
 </beans>

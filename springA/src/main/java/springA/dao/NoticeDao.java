@@ -1,5 +1,5 @@
 package springA.dao;
 
-public interface NotifyDao {
+public interface NoticeDao {
     void sendMessage(String message);
 }

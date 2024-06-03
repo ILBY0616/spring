@@ -9,9 +9,10 @@ import java.util.Scanner;
 @Setter
 public class User {
     private String name;
+
     public User() {
         Scanner sc = new Scanner(System.in);
-        System.out.println("Enter your name : admin or register or other");
+        System.out.println("Enter your username : admin or register or other");
         this.name = sc.nextLine();
     }
 }

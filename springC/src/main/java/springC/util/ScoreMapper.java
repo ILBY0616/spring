@@ -11,7 +11,7 @@ public class ScoreMapper implements RowMapper<Score> {
     public Score mapRow(ResultSet rs, int rowNum) throws SQLException {
         Score score = new Score();
         score.setId(rs.getString("id"));
-        score.setName(rs.getString("name"));
+        score.setName(rs.getString("username"));
         score.setMathScore(rs.getInt("mathScore"));
         score.setEnglishScore(rs.getInt("englishScore"));
         score.setProgramScore(rs.getInt("programScore"));

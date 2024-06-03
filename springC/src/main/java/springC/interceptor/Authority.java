@@ -21,9 +21,9 @@ public class Authority implements MethodInterceptor {
                 System.out.println("拥有任何权限");
                 break;
             case "register":
-                if(method.equals("find")){
+                if (method.equals("find")) {
                     object = invocation.proceed();
-                }else{
+                } else {
                     System.out.println("没有修改权限");
                 }
                 break;

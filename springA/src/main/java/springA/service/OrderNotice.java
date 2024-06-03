@@ -3,17 +3,17 @@ package springA.service;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import springA.dao.NotifyDao;
+import springA.dao.NoticeDao;
 import springA.pojo.Order;
 
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderNotify {
+public class OrderNotice {
     private Order order;
-    private NotifyDao notifyDao;
+    private NoticeDao noticeDao;
 
-    public void paySuccess() {
-        notifyDao.sendMessage(order.toString());
+    public void sendNotice() {
+        noticeDao.sendMessage(order.toString());
     }
 }

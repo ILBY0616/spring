@@ -1,4 +1,4 @@
-package springB.pojo;
+package springB;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -9,13 +9,14 @@ import org.springframework.stereotype.Repository;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@Repository
+
+@Repository("Order")
 public class Order {
     @Value("20210504557")
     String id;
     @Value("赵尚凌")
     String clientName;
-    @Value("97.5")
+    @Value("100")
     float money;
 
     public String toString() {

@@ -34,11 +34,11 @@ public class UserDaoImpl implements UserDao {
                 String id = scanner.nextLine();
                 sql = "select * from score where id = ?";
                 scoreList = jdbcTemplate.query(sql, new ScoreMapper(), id);
-                if(!scoreList.isEmpty()) {
+                if (!scoreList.isEmpty()) {
                     for (Score score : scoreList) {
                         System.out.println(score);
                     }
-                }else {
+                } else {
                     System.out.println("查询学号为空");
                 }
                 break;
