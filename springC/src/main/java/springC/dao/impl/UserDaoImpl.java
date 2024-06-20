@@ -57,7 +57,7 @@ public class UserDaoImpl implements UserDao {
         String courseName = scanner.nextLine();
         System.out.println("请输入修改的成绩：");
         int courseScore = scanner.nextInt();
-        String sql = "";
+        String sql;
         switch (courseName) {
             case "mathScore":
                 sql = "update score set mathScore = ? where id = ?";
@@ -72,7 +72,7 @@ public class UserDaoImpl implements UserDao {
                 sql = "update score set databaseScore = ? where id = ?";
                 break;
             default:
-                break;
+                return;
         }
         int row = jdbcTemplate.update(sql, courseScore, id);
         if (row == 1) {
