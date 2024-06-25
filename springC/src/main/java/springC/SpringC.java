@@ -11,8 +11,8 @@ import java.util.Scanner;
 public class SpringC {
     public static void main(String[] args) throws UnknownHostException {
         ApplicationContext ac = new ClassPathXmlApplicationContext("applicationContext.xml");
-        UserService userService = ac.getBean("userService", UserService.class);
         Scanner sc = new Scanner(System.in);
+        UserService userService = ac.getBean("userService", UserService.class);
         while (true) {
             System.out.println("请输入要执行的操作：1.查询 2.修改 3.退出");
             int choice = sc.nextInt();
